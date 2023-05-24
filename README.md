@@ -38,6 +38,14 @@ lista de palavras, evitando assim o trabalho de transcrever a palavra para um pa
  -  Tailwind css;
  
 
+
+### Imagem do Site:
+
+  ![Texto Alternativo](/public/site-img.png)
+
+
+
+
 ## 🎁 Gratidão
 
 * Obrigado por chegar até aqui, fique atento para as proximas versoes  📢;
