@@ -4,6 +4,9 @@
 pesquisar por meio dos filtros a música ou a notícia desejada basta clicar na palavra que você não conhece e ela será adicionada a 
 lista de palavras, evitando assim o trabalho de transcrever a palavra para um papel para pesquisar depois.
 
+# Visite o site:
+   -  [Site](https://estude-ingles-por-textos-e-musicas.vercel.app/)
+
 ## 🚀 Funcionalidades
 
 - Filtro de notícias: 
