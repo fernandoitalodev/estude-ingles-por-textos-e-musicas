@@ -15,12 +15,13 @@ const WordItem = ({word,key,selectedWords,setSelectedWords,setMessage}) => {
     
   }
   useEffect(()=>{
-    const timeout = setTimeout(() => {
+     setTimeout(() => {
       setMessage([""]);
-    }, 5000);
+    }, 3000);
+   
   },[removeWord])
   return (
-    <div key={key} className=" flex justify-between items-center   lg:p-2 rounded-xl border border-white text-center m-2 hover:border-blue-500 hover:text-blue-500 p-1 text-sm w-24">
+    <div key={key} className=" flex justify-between items-center   lg:p-2 rounded-xl border border-white text-center m-2 hover:border-blue-500 hover:text-blue-500 p-1 text-sm min-w-24 w-auto gap-3 ">
 <h2 > {word}  </h2>
 <CopyToClipboard text={word}>
 <FontAwesomeIcon icon={faXmark} onClick={()=> removeWord(word)}  />

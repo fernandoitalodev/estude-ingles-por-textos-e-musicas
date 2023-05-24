@@ -17,9 +17,10 @@ let languages = [
   ["es", "Spanish"],
 ];
 
-const apiKey =import.meta.env.API_KEY_NEWS;
+
 
 const Filter = ({ setApi, filterMusic, setFilterMusic,setApiMusic }) => {
+  const apiKey =String(import.meta.env.VITE_API_KEY_NEWS);
   const [selectedCategory, setCategory] = useState("general");
   const [selectedLanguage, setLanguage] = useState("en");
   const [search, setSearch] = useState("");

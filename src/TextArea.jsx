@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import TextStructure from "./TextStructure";
 
-let text = [
-  {
-    content:
-      "There was a time I used to look into my fathers eyes In a happy home I was a king, I had a gold throne Those days are gone Now they re memories on the wall I hear the songs From the places where I was born",
-    title: "song",
-  },
-  {
-    content:
-      "There was a time I used to look into my fathers eyes In a happy home I was a king, I had a gold throne Those days are gone Now they re memories on the wall I hear the songs From the places where I was born",
-    title: "song",
-  },
-];
-let textError=[]
+
+
 const TextArea = ({ setSelectedWords, selectedWords, articles,filterMusic,music }) => {
+  let text = [
+    {
+      content:
+        "Não foram encontrados artigos",
+      title: "...",
+    },
+    {
+      content:
+        "....",
+      title: ".......",
+    },
+  ];
   const selectWord = (el) => {
     if (selectedWords.includes(el)) {
       alert(el + " já está na lista de palavras");
@@ -45,13 +46,16 @@ const TextArea = ({ setSelectedWords, selectedWords, articles,filterMusic,music 
     });
   };
 
-  const musicIsEmpty =()=>{
-   
-       console.log("deu merda: ")
-       console.log(music)
+  const articlesIsEmpty=()=>{
+    if(!articles || articles.lenght === 0 ){
+      return text ;
+    }
     
+    return articles
   }
-  useEffect(()=>{musicIsEmpty()},[music])
+  const [updateArticles,setUpdateArticles]=useState([])
+  useEffect(()=>{
+  setUpdateArticles( articlesIsEmpty())},[articles])
 
   return (
     <div className="col-span-3 rounded-lg  min-h-96 max-h-full lg:order-1 bg-blue-700 shadow-md shadow-blue-600 font-semibold ">
@@ -63,9 +67,10 @@ const TextArea = ({ setSelectedWords, selectedWords, articles,filterMusic,music 
       
             
         }
-        { !filterMusic && articles.slice(0, 3).map((el, index) => {
+        { !filterMusic && updateArticles.slice(0, 3).map((el, index) => {
           return (
             <TextStructure
+              key={index}
               title={formatText(el.title)}
               content={formatText(el.content)}
             />

@@ -24,7 +24,7 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
     <div className=" bg-zinc-900 rounded-xl shadow-md shadow-zinc-800  lg:overflow-auto  lg:h-full lg:w-full   lg:static  ">
       <h1 className="text-center text-2xl font-semibold p-2"> Palavras 🖊️ </h1>
 
-      <div className="flex flex-col h-64 items-center justify-center">
+      <div className="flex flex-col h-64 lg:h-auto items-center justify-start">
         <div className="text-black flex justify-between p-2 mb-6 relative">
           <input
             className="rounded-lg p-2 w-auto sm:w-36 mr-2"
@@ -47,7 +47,7 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
           </span>
         </div>
 
-<div  className="flex overflow-x-auto w-full flex-wrap max-h-36 items-center justify-center " >
+<div  className="flex overflow-x-auto w-full flex-wrap  lg:overflow-hidden  items-center justify-center " >
   
           {selectedWords.map((el, index) => {
             return (
