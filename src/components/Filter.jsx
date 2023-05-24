@@ -16,7 +16,8 @@ let languages = [
   ["ja", "Japanese"],
   ["es", "Spanish"],
 ];
-const apiKey = "f526ce115bc4894cdcb480dde8adfcda";
+
+const apiKey =import.meta.env.API_KEY_NEWS;
 
 const Filter = ({ setApi, filterMusic, setFilterMusic,setApiMusic }) => {
   const [selectedCategory, setCategory] = useState("general");

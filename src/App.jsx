@@ -3,7 +3,7 @@ import TextArea from "./TextArea";
 import WordsArea from "./WordsArea";
 import Filter from "./components/Filter";
 
-const APIKEY = "f526ce115bc4894cdcb480dde8adfcda";
+
 
 function App() {
   const [selectedWords, setSelectedWords] = useState([]);
