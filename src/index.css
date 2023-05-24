@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .select-style{
+        @apply text-black p-1 text-center ms-1 rounded-md  ;
+        
+    }
+    
+}
