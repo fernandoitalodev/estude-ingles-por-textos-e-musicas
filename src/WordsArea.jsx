@@ -21,13 +21,17 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
     setInputValue("");
   };
   return (
-    <div className=" bg-zinc-900 rounded-xl shadow-md shadow-zinc-800  lg:overflow-auto  lg:h-full lg:w-full   lg:static  ">
-      <h1 className="text-center text-2xl font-semibold p-2"> Palavras 🖊️ </h1>
+    <div className="overflow-y-auto h-screen overflow-x-hidden p-2 border-2 border-black rounded-lg ">
+      <h1 className="text-center text-2xl xl:text-4xl font-semibold p-2"> Palavras 🖊️ </h1>
 
-      <div className="flex flex-col h-64 lg:h-auto items-center justify-start">
-        <div className="text-black flex justify-between p-2 mb-6 relative">
+      <div className="flex flex-col h-64 items-center justify-start">
+        <div className="w-full text-black flex justify-between flex-col p-2 mb-6 relative gap-2">
+           <span className={` -top-3 text-center text-sm ${message[1]? message[1]:"text-red-600 "} absolute `} >
+            {message[0]}
+           
+          </span>
           <input
-            className="rounded-lg p-2 w-auto sm:w-36 mr-2"
+            className="rounded-lg p-2 w-auto  border border-black "
             placeholder="Adicione uma palavra"
             type="text"
             name=""
@@ -35,19 +39,17 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
+          
           <button
-            className="border border-white rounded-lg p-1 bg-white "
+            className=" w-6/12  self-center border border-black rounded-lg p-1 bg-white xl:text-2xl "
             onClick={handleAddWord}
           >
             ADD
           </button>
-          <span className={`text-center text-sm ${message[1]? message[1]:"text-red-600 "} absolute -bottom-3`} >
-            {message[0]}
-           
-          </span>
+         
         </div>
 
-<div  className="flex overflow-x-auto w-full flex-wrap  lg:overflow-hidden  items-center justify-center " >
+<div  className="flex flex-col   justify-center w-11/12 " >
   
           {selectedWords.map((el, index) => {
             return (

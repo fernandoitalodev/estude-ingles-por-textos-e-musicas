@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import TextArea from "./TextArea";
 import WordsArea from "./WordsArea";
 import Filter from "./components/Filter";
-
+import Menu from "./components/Menu";
+import Dictionary from "./Dictionary";
+import logo from "/Smart-study.png"
 function App() {
   const [selectedWords, setSelectedWords] = useState([]);
   //Se o filterMusic for verdadeiro o texto que será mostrado é o das músicas, se for falso irá mostrar as notícias
@@ -49,9 +51,7 @@ function App() {
     getNews();
   }, [api]);
 
-  useEffect(() => {
-    console.log("articles: " + articles);
-  }, [articles]);
+ 
 
   const getMusic = async () => {
     try {
@@ -77,22 +77,19 @@ function App() {
   }, [apiMusic]);
   return (
     <>
-      <div className="min-h-screen bg-neutral-900 text-white flex flex-col items-center gap-4   ">
-        <h1 className="text-4xl text-center p-3 mb-3 font-bold ">
-          Study English APP
-        </h1>
-
+      <div className=" bg-white text-black flex flex-col items-center gap-2    justify-center bg-center bg-no-repeat  bg-[url('/bg-ingles.png')]  ">
+        
+        
+        <img src={logo} alt="logo do site" className="w-72"/>
+         <br/>
         <Filter
           setApi={setApi}
           filterMusic={filterMusic}
           setFilterMusic={setFilterMusic}
           setApiMusic={setApiMusic}
         />
-        <div className="grid lg:grid-cols-4 auto-rows-max h-full   grid-cols-1 lg:w-9/12 lg:gap-2 ">
-          <WordsArea
-            selectedWords={selectedWords}
-            setSelectedWords={setSelectedWords}
-          />
+        <div className="grid  grid-cols-1 lg:grid-cols-3 justify-center lg:w-10/12 relative  ">
+          
 
           <TextArea
             setSelectedWords={setSelectedWords}
@@ -101,7 +98,16 @@ function App() {
             filterMusic={filterMusic}
             articles={articles}
           />
+         
+          <Menu   selectedWords={selectedWords}
+            setSelectedWords={setSelectedWords} />
+            
+         
+         
         </div>
+        <Dictionary setSelectedWords={setSelectedWords}
+            selectedWords={selectedWords} />
+         
       </div>
     </>
   );
