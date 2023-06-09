@@ -7,5 +7,10 @@
         @apply text-black p-1 text-center ms-1 rounded-md  ;
         
     }
-    
+    .flex-container-col{
+        @apply flex flex-col items-center justify-center;
+    }.flex-container-row{
+        @apply flex  items-center justify-center;
+    }
+
 }

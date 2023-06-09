@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TextStructure from "./TextStructure";
+import TextStructure from "./components/TextStructure";
 
 
 
@@ -58,10 +58,10 @@ const TextArea = ({ setSelectedWords, selectedWords, articles,filterMusic,music 
   setUpdateArticles( articlesIsEmpty())},[articles])
 
   return (
-    <div className=" rounded-lg lg:border lg:border-black  mr-1 lg:h-screen lg:col-span-2 overflow-y-auto flex-shrink  ">
-      <h1 className="text-center text-2xl xl:text-4xl font-semibold p-2"> { filterMusic && "Musica 🎶 "} {!filterMusic && "Textos 📖 "} </h1>
+    <div className="order-2 rounded-lg lg:border lg:border-black  mr-1 lg:col-span-2 overflow-y-auto flex-shrink lg:h-screen ">
+      <h1 className="text-center text-2xl: xl:text-4xl font-semibold p-2"> { filterMusic && "Musica 🎶 "} {!filterMusic && "Textos 📖 "} </h1>
 
-      <div className={` p-3 ${filterMusic ? "text-center p-4 text-xl ":"text-xl"} xl:text-2xl`}>
+      <div className={` p-3 ${filterMusic ? "text-center p-4 text-xl ":"text-xl"} 2xl:text-2xl:`}>
        
         { filterMusic &&   <TextStructure title={formatText(music.mus[0].name ) } content={formatText(music.mus[0].text)} />
       

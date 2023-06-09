@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import TextArea from "./TextArea";
-import WordsArea from "./WordsArea";
 import Filter from "./components/Filter";
 import Menu from "./components/Menu";
 import Dictionary from "./Dictionary";
 import logo from "/Smart-study.png"
+import Info from "./components/Info";
+
+const tutorial=[
+  {title:"Filtro: ",message:" escolha  entre músicas ou notícias para estudar por textos;"},
+  {title:"Textos: ",message:"Ao clicar em uma palavra ela é adicionada a sua lista de palavras"},
+  {title:"Dicionário: ",message:"Pesquise qual o significado das suas palavras;"}
+]
 function App() {
   const [selectedWords, setSelectedWords] = useState([]);
   //Se o filterMusic for verdadeiro o texto que será mostrado é o das músicas, se for falso irá mostrar as notícias
@@ -77,17 +83,15 @@ function App() {
   }, [apiMusic]);
   return (
     <>
-      <div className=" bg-white text-black flex flex-col items-center gap-2    justify-center bg-center bg-no-repeat  bg-[url('/bg-ingles.png')]  ">
+      <div className=" bg-white text-black flex-container-col gap-2 bg-center bg-no-repeat  md:bg-[url('/bg-ingles.png')] bg-[url('/bg-mobile.png')] ">
         
         
         <img src={logo} alt="logo do site" className="w-72"/>
-         <br/>
-        <Filter
-          setApi={setApi}
-          filterMusic={filterMusic}
-          setFilterMusic={setFilterMusic}
-          setApiMusic={setApiMusic}
-        />
+         
+        <div className="text-[#1d2a57] mb-5">
+          <h2>Como usar<Info infos={tutorial} /></h2>
+        </div>
+        <br/>
         <div className="grid  grid-cols-1 lg:grid-cols-3 justify-center lg:w-10/12 relative  ">
           
 
@@ -98,9 +102,17 @@ function App() {
             filterMusic={filterMusic}
             articles={articles}
           />
-         
+         <div className="order-1 lg:order-2 flex-container-col gap-2 justify-start lg:h-screen">
+          <Filter
+          setApi={setApi}
+          filterMusic={filterMusic}
+          setFilterMusic={setFilterMusic}
+          setApiMusic={setApiMusic}
+        />
           <Menu   selectedWords={selectedWords}
             setSelectedWords={setSelectedWords} />
+         </div>
+          
             
          
          

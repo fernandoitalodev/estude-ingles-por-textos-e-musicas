@@ -1,4 +1,6 @@
 import {
+  faChevronLeft,
+  faChevronRight,
   faCopy,
   faMagnifyingGlass,
   faPlay,
@@ -42,10 +44,17 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
     }
   };
   const nextWord = () => {
-    if (count == selectedWords.length-1) {
+    if (count >= selectedWords.length-1) {
       return 
     } else {
       setCount(count + 1);
+    }
+  };
+  const prevWord = () => {
+    if (count < 1) {
+      return 
+    } else {
+      setCount(count - 1);
     }
   };
   useEffect(() => {
@@ -69,27 +78,33 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
     
   }
   return (
-    <div className="h-screen text-[#1d2a57] grid-span-3 relative mt-4 ">
-      <div className="flex items-center justify-center gap-3 relative " >
-        <h1 className="text-5xl xl:text-27xl text-center mb-4 font-bold">Dicionário</h1>
+    <div className="h-screen text-[#1d2a57] grid-span-3  mt-4 ">
+      <div className="flex-container-row gap-3 relative " >
+        <h1 className="text-5xl 2xl:text-27xl text-center mb-4 font-bold">Dicionário</h1>
         <Info  infos={dictionaryInfo} />
       </div>
-      <div className="flex gap-2 relative items-center justify-center ">
+      <div className="flex-container-row gap-2 relative ">
+      <div
+          
+          className="border p-2 text-lg rounded-lg border-[#1d2a57] hover:bg-[#1d2a57] hover:text-white 2xl:text-xl "
+        >
+          <FontAwesomeIcon onClick={() => prevWord()} icon={faChevronLeft} />
+        </div>
         <div
           onClick={() => sendWord()}
           className="w-6/12   text-lg relative m-2"
         >
-          <h5 className="xl:text-xl text-sm absolute -top-5">Palavras da lista: <span>{selectedWords.length <1? count : count+1}/ {selectedWords.length}</span> </h5>
-          <div className="flex items-center justify-center h-12 border-pink-500  text-center border-2 rounded-lg overflow-y-auto">
+          <h5 className="2xl:text-xl text-sm absolute -top-5">Palavras da lista: <span>{selectedWords.length <1? count : count+1}/ {selectedWords.length}</span> </h5>
+          <div className="flex-container-row h-12 border-pink-500  text-center border-2 rounded-lg overflow-y-auto">
             {" "}
             {selectedWords[count]}{" "}
           </div>
         </div>
         <div
-          onClick={() => nextWord()}
-          className="border p-2 text-lg rounded-lg border-[#1d2a57] hover:bg-[#1d2a57] hover:text-white xl:text-xl "
+          
+          className="border p-2 text-lg rounded-lg border-[#1d2a57] hover:bg-[#1d2a57] hover:text-white 2xl:text-xl "
         >
-          Próxima
+          <FontAwesomeIcon onClick={() => nextWord()} icon={faChevronRight} />
         </div>
 
       </div>
@@ -99,7 +114,7 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
             ref={inputRef}
             value={inputWord}
             onChange={(e) => setInputWord(e.target.value)}
-            className="border-2 border-[#1d2a57] p-2 rounded-lg xl:w-72"
+            className="border-2 border-[#1d2a57] p-2 rounded-lg 2xl:w-72"
             type="text"
           />
           <FontAwesomeIcon
@@ -110,7 +125,7 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
         </div>
         <button
           onClick={() => searchWord()}
-          className="font-semibold border-[#1d2a57] border-2 p-2 rounded-lg hover:bg-[#1d2a57] hover:text-white xl:text-xl "
+          className="font-semibold border-[#1d2a57] border-2 p-2 rounded-lg hover:bg-[#1d2a57] hover:text-white 2xl:text-xl "
         >
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
@@ -120,14 +135,14 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
         <div className="font-serif w-auto">
           <div className=" m-3 flex items-center justify-between p-2  ">
             <div className="">
-              <h2 className="text-7xl text-bold xl:text-10xl ">{apiData.word}</h2>
-              <h3 className=" indent-3 text-xl xl:text-4xl text-pink-500 font-semibold">
+              <h2 className="text-7xl text-bold 2xl:text-10xl ">{apiData.word}</h2>
+              <h3 className=" indent-3 text-xl 2xl:text-4xl text-pink-500 font-semibold">
                 {apiData.phonetic}
               </h3>
             </div>
             <div
               onClick={() => playSound(apiData.phonetics[0].audio)}
-              className="bg-pink-100 text-3xl w-16 h-16 border rounded-[50%] border-pink-400 flex items-center justify-center xl:text-5xl  "
+              className="bg-pink-100 text-3xl w-16 h-16 border rounded-[50%] border-pink-400 flex-container-row 2xl:text-5xl  "
             >
               <FontAwesomeIcon className="ml-1 text-pink-500  " icon={faPlay} />
             </div>
@@ -141,7 +156,7 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
                     item.definitions.length <= 1 ? "hidden" : ""
                   }`}
                 >
-                  <h1 className="text-2xl font-semibold xl:text-4xl bg-white p-3 ">
+                  <h1 className="text-2xl: font-semibold 2xl:text-4xl bg-white p-3 ">
                     {" "}
                     {item.partOfSpeech}
                   </h1>
@@ -160,22 +175,24 @@ const Dictionary = ({ setSelectedWords, selectedWords }) => {
                           {el.example && item.definitions.length > 3 && (
                             <>
                               {" "}
-                              <h3 className=" text-lg xl:text-2xl  font-semibold  text-md">
+                              <h3 className=" text-lg 2xl:text-2xl:  font-semibold  text-md">
                                 {" "}
                                 {el.definition}
                               </h3>
                               <ol className="list-disc  p-2 ml-">
-                                <li className="text-sm xl:text-2xl">
+                                <li className="text-sm 2xl:text-2xl:">
                                   {" "}
                                   {el?.example}
-                                  <CopyToClipboard text={el.example}>
+                                  
                                     <Tooltip message="Copiar">
+                                      <CopyToClipboard text={el.example}>
                                       <FontAwesomeIcon
                                         className="text-md ml-1"
                                         icon={faCopy}
                                       />
+                                      </CopyToClipboard>
                                     </Tooltip>
-                                  </CopyToClipboard>
+                                  
                                 </li>
                               </ol>
                             </>

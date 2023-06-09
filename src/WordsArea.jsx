@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WordItem from "./WordItem";
+import WordItem from "./components/WordItem";
 
 const WordsArea = ({ selectedWords, setSelectedWords }) => {
   const [inputValue, setInputValue] = useState("");
@@ -21,8 +21,8 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
     setInputValue("");
   };
   return (
-    <div className="overflow-y-auto h-screen overflow-x-hidden p-2 border-2 border-black rounded-lg ">
-      <h1 className="text-center text-2xl xl:text-4xl font-semibold p-2"> Palavras 🖊️ </h1>
+    <div className="overflow-y-auto h-screen overflow-x-hidden p-2 border-2 border-black rounded-lg lg:h-full">
+      <h1 className="text-center text-2xl: 2xl:text-4xl font-semibold p-2"> Palavras 🖊️ </h1>
 
       <div className="flex flex-col h-64 items-center justify-start">
         <div className="w-full text-black flex justify-between flex-col p-2 mb-6 relative gap-2">
@@ -41,7 +41,7 @@ const WordsArea = ({ selectedWords, setSelectedWords }) => {
           />
           
           <button
-            className=" w-6/12  self-center border border-black rounded-lg p-1 bg-white xl:text-2xl "
+            className=" w-6/12  self-center border border-black rounded-lg p-1 bg-white 2xl:text-2xl: "
             onClick={handleAddWord}
           >
             ADD

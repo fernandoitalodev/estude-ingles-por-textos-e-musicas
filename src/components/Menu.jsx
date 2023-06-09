@@ -7,8 +7,8 @@ const Menu = ({selectedWords,setSelectedWords}) => {
     const [hideMenu,setHideMenu]=useState(false)
   return (<>
 
-    <div className={` w-7/12 lg:w-10/12   top-0 fixed h-screen bg-white lg:col-span-1 right-0 flex flex-col z-50 ${hideMenu? "block":"hidden"} lg:block lg:static `} >
-<FontAwesomeIcon icon={faXmark} onClick={()=> setHideMenu(!hideMenu)} className="right-2 top-2 absolute text-2xl lg:hidden " />
+    <div className={` w-7/12 lg:w-full   top-0 fixed lg:h-full bg-white lg:col-span-1 right-0 flex flex-col z-50 ${hideMenu? "block":"hidden"} lg:block lg:static `} >
+<FontAwesomeIcon icon={faXmark} onClick={()=> setHideMenu(!hideMenu)} className="right-2 top-2 absolute text-2xl: lg:hidden " />
 
 <WordsArea
             selectedWords={selectedWords}

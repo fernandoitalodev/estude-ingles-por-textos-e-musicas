@@ -21,7 +21,7 @@ const WordItem = ({word,key,selectedWords,setSelectedWords,setMessage}) => {
    
   },[removeWord])
   return (
-    <div key={key} className=" flex  justify-between items-center  rounded-xl border   m-2 hover:border-blue-500 hover:text-blue-500 p-2 text-lg border-black  xl:text-2xl    w-full ">
+    <div key={key} className=" flex  justify-between items-center  rounded-xl border   m-2 hover:border-blue-500 hover:text-blue-500 p-2 text-lg border-black  2xl:text-2xl:    w-full ">
 <h2 > {word}  </h2>
 <CopyToClipboard text={word}>
 <FontAwesomeIcon icon={faXmark} onClick={()=> removeWord(word)}  />
